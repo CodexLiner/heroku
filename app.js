@@ -21,9 +21,13 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello Bhai <h1/>");
 });
 app.get("/history", (req, res) => {
-  BrowserHistory.getChromeHistory(100).then(function (history) {
-    res.send(history);
-  });
+  try {
+    BrowserHistory.getChromeHistory(10).then(function (history) {
+      res.send(history);
+    });
+  } catch (e) {
+    res.send("failed bhai");
+  }
 });
 
 app.listen(PORT, () => {
