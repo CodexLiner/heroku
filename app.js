@@ -14,9 +14,12 @@
 const express = require("express");
 const BrowserHistory = require("node-browser-history");
 
-const PORT = 5000;
+const PORT = 3000;
 
 const app = express();
+app.get("/", (req, res) => {
+  res.send("<h1>Hello Bhai <h1/>");
+});
 app.get("/history", (req, res) => {
   BrowserHistory.getChromeHistory(100).then(function (history) {
     res.send(history);
